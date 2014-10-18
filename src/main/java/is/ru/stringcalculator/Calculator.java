@@ -21,9 +21,20 @@ public class Calculator {
 	private static String[] splitNumbers(String numbers){
 		if(numbers.startsWith("//["))
 		{
-			String delimiter = numbers.substring(3, numbers.indexOf("]"));
+			String delimiter = numbers.substring(3, numbers.indexOf("\n"));
+			delimiter = delimiter.replaceAll("\\[", "");
+			
+			String[] splitDelimiters = delimiter.split("\\]");
+			delimiter = "";
+			for(String s : splitDelimiters)
+			{
+				delimiter = delimiter + Pattern.quote(s) + "|";
+			}
+			if(delimiter.endsWith("|"))
+			{
+				delimiter = delimiter = delimiter.substring(0, delimiter.length()-3);
+			}
 			String theNumbers = numbers.substring(numbers.indexOf("\n") + 1);
-			delimiter = Pattern.quote(delimiter);
 			return theNumbers.split(delimiter);
 			
 		}
