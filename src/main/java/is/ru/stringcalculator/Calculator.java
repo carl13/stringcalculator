@@ -43,7 +43,10 @@ public class Calculator {
         	}
         	else
         	{
-        		total += theNumber;        		
+        		if(theNumber < 1000)
+        		{
+        			total += theNumber;        		        			
+        		}
         	}
 		}
         if(Negative.isEmpty())

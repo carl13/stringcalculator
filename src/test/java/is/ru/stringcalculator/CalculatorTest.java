@@ -40,7 +40,6 @@ public class CalculatorTest {
     	assertEquals(3, Calculator.add("//;\n1;2"));
     }
 	
-	
 	@Test
     public void testNegativeNumbers(){
 		try{
@@ -50,6 +49,11 @@ public class CalculatorTest {
 		catch(RuntimeException e){
 			assertEquals("Negatives not allowed: -1", e.getMessage());
 		}		
-    }    
+    } 
+	
+	@Test
+    public void testNumbersBiggerThanOneThousand(){
+    	assertEquals(2, Calculator.add("1001,2"));
+    }
 
 }
