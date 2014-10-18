@@ -19,7 +19,15 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers){
-		if(numbers.startsWith("/"))
+		if(numbers.startsWith("//["))
+		{
+			String delimiter = numbers.substring(3, numbers.indexOf("]"));
+			String theNumbers = numbers.substring(numbers.indexOf("\n") + 1);
+			delimiter = Pattern.quote(delimiter);
+			return theNumbers.split(delimiter);
+			
+		}
+		else if(numbers.startsWith("/"))
 		{
 			String delimiter = Character.toString(numbers.charAt(2));
 			String theNumbers = numbers.substring(4);
